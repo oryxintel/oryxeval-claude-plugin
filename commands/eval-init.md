@@ -24,7 +24,7 @@ read it out of the plan and wire it in.
 `evals/` is ONE oryxflow project; each eval is a folder inside it:
 
 ```
-evals/                         # the project dir - every eval is launched from here
+evals/                         # the project dir - launch every eval from here
   _env.py                      # ONCE per repo: credentials + import path
   data/                        # ONE cache for every eval (created on first run)
   run_eval_<name>.py           # per eval: 3 lines, ev.cli(<Name>Eval)
@@ -32,10 +32,10 @@ evals/                         # the project dir - every eval is launched from h
     __init__.py  README.md  eval.py  agent.py  cases.csv  fixtures/  results/
 ```
 
-Why: the costly part of an eval in an app repo is the setup (where production code
-is importable from, how credentials load), and written per eval it gets re-derived
-and drifts. `_env.py` holds it once. Eval classes share the cache, so each must be
-uniquely named.
+Why: the costly part of an eval in an app repo is the setup (where production
+code is importable from, how credentials load), and written per eval it gets
+re-derived and drifts. `_env.py` holds it once. Eval classes share the cache, so
+each must be uniquely named.
 
 The template mirrors it: `_env.py`, `run_eval_NAME.py` and the `NAME/` folder.
 
@@ -87,6 +87,10 @@ Then diff the source and target file lists to know what was created vs skipped,
 via shell listings, not by reading file contents. `README.md` is NOT in the
 template - the plan wrote it.
 
+An existing eval that imports `oryxflow.evals` is not rewritten to match the
+template: migrate it per the `oryxflow.evals` rule in
+`${CLAUDE_PLUGIN_ROOT}/skills/oryxeval/SKILL.md`.
+
 ## 3. Fill the template from the plan
 
 Edit the COPIED files, never the template.
@@ -96,10 +100,10 @@ Edit the COPIED files, never the template.
   - **where production code is importable from.** The `sys.path.insert` line
     (`ROOT` for an oryxflow project), unless it already imports. Never install
     it or make an env for the eval.
-  - **how credentials load** - by ABSOLUTE path anchored on `ROOT`, never relative
-    to the working directory. A loader that resolves relative to the working
-    directory finds nothing from `evals/` and every case raises. Never write a key
-    into the file; point at where it is stored.
+  - **how credentials load** - by ABSOLUTE path anchored on `ROOT`, never
+    relative to the working directory. A loader that resolves relative to the
+    working directory finds nothing from `evals/` and every case raises. Never
+    write a key into the file; point at where it is stored.
 
   If `_env.py` already existed, read it and do not change it; if this eval needs
   something it lacks, say so and propose the edit.
@@ -115,10 +119,10 @@ Edit the COPIED files, never the template.
 - **`eval.py`** - declare:
   - **the class name**: `<Name>Eval`, unique across `evals/` (every eval shares
     one cache, keyed on the class name). Grep the other evals before choosing.
-  - the arm parameters (the axis the plan compares), one `ev.*Parameter` each (oryxeval
-re-exports oryxflow's),
-    with the baseline arm's value named `baseline` (or set `baseline = '<arm>'`):
-    the verdict reports every arm against it;
+  - the arm parameters (the axis the plan compares), one `ev.*Parameter` each
+    (oryxeval re-exports oryxflow's), with the baseline arm's value named
+    `baseline` (or set `baseline = '<arm>'`): the verdict reports every arm
+    against it;
   - `metric = ev.Metric(...)` from the plan's metric, plus its `coverage=`
     companion when the metric is a rate over a filtered subset. Match the plan's
     `The table` section: a BOOLEAN column for a per-case rate, a callable
@@ -142,12 +146,14 @@ re-exports oryxflow's),
 - **`cases.csv`** - leave the placeholder rows alone; `/oryxeval:eval-cases`
   fills them. Keep the `synthetic` column and the control row - they are schema.
 
-Leave the `PLACEHOLDER SCAFFOLD` marker on the `CASES` line of `eval.py` - it tells
-you and any reviewer that this eval still runs on placeholder cases. Delete every OTHER marker you filled.
+Leave the `PLACEHOLDER SCAFFOLD` marker on the `CASES` line of `eval.py` - it
+tells you and any reviewer that this eval still runs on placeholder cases.
+Delete every OTHER marker you filled.
 
 Name any declaration the plan did not answer rather than inventing one. If the
 plan has no `Measure` / `The table`, `Data` or `Running it` section, it predates
-those - derive what you can, and say which gate numbers have no column behind them.
+those - derive what you can, and say which gate numbers have no column behind
+them.
 
 ## 4. Check the imports resolve
 
@@ -162,8 +168,8 @@ version:
 - poetry (`poetry.lock`): `poetry add "oryxeval>=26.11.0"`
 - venv / conda env: `pip install "oryxeval>=26.11.0"`
 
-If the production package pins its dependencies in a subdirectory's `pyproject.toml`,
-that is the environment to install into.
+If the production package pins its dependencies in a subdirectory's
+`pyproject.toml`, that is the environment to install into.
 
 **b. The eval package and its production import** -
 `python -c "import <name>.agent"` from `evals/`. That runs `_env.py` and the

@@ -25,13 +25,15 @@ than one, ask which. If there is none, STOP - run `/oryxeval:eval-init` first.
 Read, before searching for anything:
 
 - `evals/<name>/README.md` - the plan. It names the function under test, the
-  metric, the guardrail and the baseline. The metric is what tells you whether a
-  candidate case is even scorable; a case the metric cannot read is not a case.
-- `evals/<name>/cases.csv` - the current header and rows, so your additions match
-  the columns and you can tell placeholders from anything already harvested.
-- The prompt or template under test, in full. You need its literal text for the
-  holdout check in step 5, and its instructions tell you which behaviors are
-  meant to be conditional (those are where the controls live).
+  metric, the guardrail and the baseline. The metric is what tells you whether
+  a candidate case is even scorable; a case the metric cannot read is not a
+  case.
+- `evals/<name>/cases.csv` - the current header and rows, so your additions
+  match the columns and you can tell placeholders from anything already
+  harvested.
+- The prompt or template under test, in full. You need its literal text for
+  the holdout check in step 5, and its instructions tell you which behaviors
+  are meant to be conditional (those are where the controls live).
 
 ## 2. Harvest real cases FIRST
 
@@ -200,7 +202,8 @@ not there.
 Once the set is real - every placeholder row superseded and the categories in
 section 6 present - delete the `PLACEHOLDER SCAFFOLD` marker line from `eval.py`.
 That marker means "this eval still runs on placeholder cases", so leaving it on a
-real set tells you and any reviewer a finished eval is unfinished, forever. If placeholder rows remain, LEAVE the marker and say which rows still
+real set tells you and any reviewer a finished eval is unfinished, forever. If
+placeholder rows remain, LEAVE the marker and say which rows still
 need replacing.
 
 ## 9. Report

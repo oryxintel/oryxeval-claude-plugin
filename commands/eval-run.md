@@ -27,6 +27,8 @@ restate what the verdict block already prints - interpret it.
   other. Say which two you picked and why, in one line, before the bill.
 - Every run launches FROM `evals/` (`cd evals`): the shared cache and `_env.py`
   live there. A run from anywhere else warns and builds a second cache.
+- `No module named 'oryxflow.evals'`: STOP and migrate the eval per the
+  `oryxflow.evals` rule in `${CLAUDE_PLUGIN_ROOT}/skills/oryxeval/SKILL.md`.
 - If the user named an arm the eval does not declare, STOP and list the arms that
   exist. Do not silently substitute a neighbour.
 
@@ -209,8 +211,8 @@ With no `$ARGUMENTS` in a directory that already has results:
   real call, no bill, no sweep), `--repeats`, `--concurrency`, `--reset` (drops
   BOTH stages, so it re-bills the model calls - confirm first), `--rescore`
   (re-runs only the scorers over stored outputs: no model calls, but an LLM judge
-  still bills per case), `--side-by-side`, `--csv`, `--yes`. The cost confirmation also offers that
-  same probe inline as `c`.
+  still bills per case), `--side-by-side`, `--csv`, `--yes`. The cost
+  confirmation also offers that same probe inline as `c`.
 - A scorer or judge-rubric edit costs no model calls: the bill shows
   `re-scoring N arms from stored outputs`. Say so when proposing one.
 - Raise `--repeats` before believing a small delta; that is the answer to "inside

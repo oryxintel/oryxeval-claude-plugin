@@ -17,6 +17,10 @@ The plugin is listed in the `oryxflow` marketplace:
 Then install the library into the environment that runs your production code:
 `pip install "oryxeval>=26.11.0"`.
 
+An `evals/` written against `oryxflow.evals` keeps its cache only if you change
+its import lines and nothing else; the steps are the `oryxflow.evals` rule in
+[skills/oryxeval/SKILL.md](skills/oryxeval/SKILL.md).
+
 To load a local clone without installing:
 `claude --plugin-dir /path/to/oryxeval-claude-plugin`.
 

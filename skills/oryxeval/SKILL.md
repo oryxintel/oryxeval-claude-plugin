@@ -24,6 +24,14 @@ evals pages) and https://pydantic.dev/docs/ai/evals/ . pydantic-evals already sh
 judges, tool-call checks and confusion matrices; reuse them. The INSTALLED version
 wins over the docs. Install: `pip install "oryxeval>=26.11.0"`.
 
+**`No module named 'oryxflow.evals'`? Change only the import lines** of each
+existing eval (`oryxflow.evals` -> `oryxeval`). Keep `import oryxflow` and every
+function body as it is: `code_version()`, `case()` and their helpers are hashed,
+so any edit (even `oryxflow.hash_files` -> `ev.hash_files`) re-bills every arm.
+Then clear the StalenessWarnings once, from `evals/`:
+`python -c "import oryxflow; oryxflow.accept_code()"`. Only new evals use
+`ev.hash_files`.
+
 **A plan that changes LLM behavior names its eval.** Put the eval inside the
 plan's TASKS, not in a "before merging" note - a step outside the task list is a
 step a task-by-task executor never runs. Check `evals/` first: extending an

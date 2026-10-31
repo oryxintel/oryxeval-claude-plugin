@@ -111,7 +111,7 @@ git checkout main && git pull
 git checkout -b 20260822-evals
 ```
 
-**NEVER commit or push this repository.** Editing its files is expected; committing them is not  -
+**NEVER commit or push this repository.** Editing its files is expected; committing them is not -
 the maintainer commits this repo themselves. Creating the branch is fine; leave every change in the
 working tree. This also means **no `version` bump in `.claude-plugin/plugin.json`**: changelog
 bullets go under `## [Unreleased]` and the maintainer cuts the release.
@@ -162,7 +162,7 @@ acceptance tests for the whole feature. A subagent cannot run them meaningfully.
 
 Frontmatter: `description`, `disable-model-invocation: true`.
 
-Behavior: gather context, then ask four questions with proposed answers drawn from the repository  -
+Behavior: gather context, then ask four questions with proposed answers drawn from the repository -
 the questions are fixed, the proposals are whatever is actually there.
 
 Context to gather first (shell + read, not guesswork): the working-tree diff and recent commits

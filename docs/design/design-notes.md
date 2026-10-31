@@ -142,7 +142,7 @@ command re-derives and re-prints the bill before spending anything, so the
 skill's estimate stays advisory and the gate that stops a run lives in one
 place.
 
-## Evals in any repo: one `evals/` project, a second skill, no gates
+## Evals in any repo: one `evals/` project, a skill of their own, no gates
 
 Recorded 2026-10-06, from reading a downstream consumer project (an LLM web app)
 that had five hand-built evals and ~25 throwaway probe scripts.
@@ -192,11 +192,39 @@ installed version still wins over them.
 ## No project install - DO NOT REVISIT
 
 The oryxflow plugin once shipped a template `pyproject.toml` and
-`pip install -e .` so `import tasks` resolved outside the root. Removed there; never bring
-back any form of it for an eval (pyproject, setup.py, install step or advice).
-Installing the code under test forces a venv per project (module names such as
-`tasks` collide across installs), and agents made one each time (bulky, and
-churns a synced folder). For evals, fix imports ONLY with a `sys.path` line in
-`evals/_env.py` and by launching from `evals/`. A new `ModuleNotFoundError` is a
-gap there - fix it there. (Installing the harness,
+`pip install -e .` so `import tasks` resolved outside the root. Removed there;
+never bring back any form of it for an eval (pyproject, setup.py, install step
+or advice). Installing the code under test forces a venv per project (module
+names such as `tasks` collide across installs), and agents made one each time
+(bulky, and churns a synced folder). For evals, fix imports ONLY with a
+`sys.path` line in `evals/_env.py` and by launching from `evals/`. A new
+`ModuleNotFoundError` is a gap there - fix it there. (Installing the harness,
 `oryxeval`, is fine; the rule is about the code under test.)
+
+## Migrating from `oryxflow.evals`: imports only
+
+Recorded 2026-10-31, from the cache gate run for the split (an eval cached
+under oryxflow 26.10.22, re-run on the split packages).
+
+**Why only the import lines.** No cache key holds a module path, so swapping
+`import oryxflow.evals as ev` for `import oryxeval as ev` re-ran nothing (0
+model calls). But the template diff also turns `oryxflow.hash_files(...)` into
+`ev.hash_files(...)` inside `code_version()`, and that re-billed every cell of
+both arms. `TaskEval` moves the user's `code_version` to `_arm_version`, and
+`_case_callables()` skips only the NAME `code_version`, so the function body is
+AST-hashed into the model-call stage's key. The same holds for `case()` and its
+helpers, so ANY cosmetic edit of those bodies re-bills, even one that calls the
+same object. Rejected: hashing resolved objects instead of source - that moves
+every existing key once, re-billing every user (cache identity is frozen).
+
+**Why `accept_code()` with no argument.** After an imports-only change the run
+reuses the cache but prints StalenessWarnings (the files changed, the hashed
+bodies did not) on every run until accepted. The warning names
+`accept_code(<Eval>Outputs)`, a generated class you cannot import, and
+`accept_code(<Eval>)` alone re-stamps only the scoring stage, so the warnings
+for the model-call stage stay. A bare `oryxflow.accept_code()` from `evals/`
+re-stamps both stages of every arm: 0 calls and 0 warnings on the next run. An
+edit inside a hashed body still changes the token and reruns (accepting does
+not rescue it); what it silences is any other file-level warning, so run it
+right after the import change. New evals have no cache to lose, so the template
+uses `ev.hash_files`.
