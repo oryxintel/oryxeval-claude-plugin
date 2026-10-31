@@ -1,0 +1,15 @@
+# Python
+__pycache__/
+*.pyc
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# Claude local state
+.claude/settings.local.json
+
+# client names for .githooks/check_private_terms.py (machine-local, never commit)
+.private-terms
