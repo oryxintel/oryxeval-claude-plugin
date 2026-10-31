@@ -52,7 +52,7 @@ Read `evals/<name>/README.md`.
 Never skip the plan and scaffold from your own guesses. An eval whose metric was
 never argued measures whatever the scaffold happened to declare.
 
-Before writing any oryxflow or pydantic-evals code below, read the docs for the
+Before writing any oryxeval or pydantic-evals code below, read the docs for the
 API you are about to use, not its source: https://docs.oryxflow.dev/llms.txt
 (the LLM evals pages) and https://pydantic.dev/docs/ai/evals/ . Read source only
 to settle what the docs leave open. The INSTALLED version wins over the docs;
@@ -115,7 +115,8 @@ Edit the COPIED files, never the template.
 - **`eval.py`** - declare:
   - **the class name**: `<Name>Eval`, unique across `evals/` (every eval shares
     one cache, keyed on the class name). Grep the other evals before choosing.
-  - the arm parameters (the axis the plan compares), one oryxflow Parameter each,
+  - the arm parameters (the axis the plan compares), one `ev.*Parameter` each (oryxeval
+re-exports oryxflow's),
     with the baseline arm's value named `baseline` (or set `baseline = '<arm>'`):
     the verdict reports every arm against it;
   - `metric = ev.Metric(...)` from the plan's metric, plus its `coverage=`
@@ -142,8 +143,7 @@ Edit the COPIED files, never the template.
   fills them. Keep the `synthetic` column and the control row - they are schema.
 
 Leave the `PLACEHOLDER SCAFFOLD` marker on the `CASES` line of `eval.py` - it tells
-`/oryxflow:check-standards` and `/oryxflow:update-project` that this eval still
-runs on placeholder cases. Delete every OTHER marker you filled.
+you and any reviewer that this eval still runs on placeholder cases. Delete every OTHER marker you filled.
 
 Name any declaration the plan did not answer rather than inventing one. If the
 plan has no `Measure` / `The table`, `Data` or `Running it` section, it predates
@@ -162,8 +162,7 @@ version:
 - poetry (`poetry.lock`): `poetry add "oryxeval>=26.11.0"`
 - venv / conda env: `pip install "oryxeval>=26.11.0"`
 
-If the
-production package pins its dependencies in a subdirectory's `pyproject.toml`,
+If the production package pins its dependencies in a subdirectory's `pyproject.toml`,
 that is the environment to install into.
 
 **b. The eval package and its production import** -

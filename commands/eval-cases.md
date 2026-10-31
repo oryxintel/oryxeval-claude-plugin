@@ -200,8 +200,7 @@ not there.
 Once the set is real - every placeholder row superseded and the categories in
 section 6 present - delete the `PLACEHOLDER SCAFFOLD` marker line from `eval.py`.
 That marker means "this eval still runs on placeholder cases", so leaving it on a
-real set makes `/oryxflow:check-standards` report a finished eval as unfinished
-forever. If placeholder rows remain, LEAVE the marker and say which rows still
+real set tells you and any reviewer a finished eval is unfinished, forever. If placeholder rows remain, LEAVE the marker and say which rows still
 need replacing.
 
 ## 9. Report

@@ -19,9 +19,8 @@ half is shaped the way it is.
 
 `eval-plan` writes a plan and NO code; `eval-init` copies files. The obvious
 alternative - one command that asks the questions and scaffolds in the same
-breath - was rejected twice over. It would give `init-` a second meaning in this
-plugin, where everywhere else (`init-project`, `init-gitlfs`) it means "copies
-files" and nothing more. And an eval designed after its scaffold exists gets
+breath - was rejected twice over. It would give `init-` a second meaning: `eval-init`
+means "copies files" and nothing more. And an eval designed after its scaffold exists gets
 designed AROUND the scaffold: the metric drifts toward whatever the template's
 placeholder metric is easiest to edit into, which is the one decision in an eval
 that must not be made by convenience. The split also mirrors the library's own
@@ -124,7 +123,7 @@ Recorded because the alternatives both break the one uniform rule. Deleting
 every marker at init would make a 3-row eval look finished - exactly the
 "present file mistaken for real work" the marker exists to prevent. Deleting
 none would leave a filled `eval.py` marked as scaffolding forever, so
-`/oryxflow:check-standards` reports a finished eval as unfinished and the user
+the marker tells every reviewer a finished eval is unfinished and the user
 learns to ignore a marker, after which it means nothing anywhere in the
 project. The general rule for any template: every marker shipped needs a named
 command that removes it, and where two commands share the job, the handoff is
@@ -192,12 +191,12 @@ installed version still wins over them.
 
 ## No project install - DO NOT REVISIT
 
-26.10.5 of the oryxflow plugin shipped a template `pyproject.toml` + `pip
-install -e .` so `import tasks` resolved outside the root. Removed; never bring
+The oryxflow plugin once shipped a template `pyproject.toml` and
+`pip install -e .` so `import tasks` resolved outside the root. Removed there; never bring
 back any form of it for an eval (pyproject, setup.py, install step or advice).
-Eval projects share module names (`tasks`, `flow`, `cfg`), so installs into one
-interpreter shadow each other - it forces a venv per project, and agents made
-one each time (bulky, and churns a synced folder). For evals, fix imports ONLY
-with a `sys.path` line in `evals/_env.py` and by launching from `evals/`. A new
-`ModuleNotFoundError` is a gap there - fix it there. (Installing the harness,
+Installing the code under test forces a venv per project (module names such as
+`tasks` collide across installs), and agents made one each time (bulky, and
+churns a synced folder). For evals, fix imports ONLY with a `sys.path` line in
+`evals/_env.py` and by launching from `evals/`. A new `ModuleNotFoundError` is a
+gap there - fix it there. (Installing the harness,
 `oryxeval`, is fine; the rule is about the code under test.)

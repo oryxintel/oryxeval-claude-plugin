@@ -1,8 +1,8 @@
 # Changelog
 
 All notable changes to the oryxeval plugin are recorded here. Format follows
-[Keep a Changelog](https://keepachangelog.com/); versions are calver
-(`YY.M.D`, or `YY.M.N` when it tracks the library). `## [Unreleased]` ships
+[Keep a Changelog](https://keepachangelog.com/); the version tracks the
+`oryxeval` library release it pairs with. `## [Unreleased]` ships
 nothing until it is stamped with a version (see the repo `CLAUDE.md`).
 
 Entry conventions: a bullet-leading `BREAKING:` token when a change breaks an

@@ -1,5 +1,7 @@
 # Evals in any repo: the `evals/` project, the probe tier, docs first
 
+Historical plan, written when evals lived in the oryxflow plugin; identifiers updated to oryxeval.
+
 > Depends on the library half in the oryxflow repo:
 > `docs/todo/20261006-evals-release-readiness.md` (outputs/scores split, `baseline=`,
 > `side_by_side()`, launch guard, pydantic-evals >= 2, PyPI release). Do not release this plan's
@@ -89,7 +91,7 @@ plan; it is used only to validate (the rule-capture dogfood run below).
 4. **`commands/eval-run.md`** - run from `evals/`; write the side-by-side next to the verdict; the
    judgement report of decision 4.
 5. **`commands/eval-cases.md`** - paths under the new layout.
-6. **`skills/oryxflow/evals.md`** - docs-first rule; probe tier; a short "already in pydantic-evals"
+6. **`skills/oryxeval/evals.md`** - docs-first rule; probe tier; a short "already in pydantic-evals"
    table (LLMJudge / GEval, ToolCorrectness / TrajectoryMatch / ArgumentCorrectness,
    ConfusionMatrixEvaluator, CaseLifecycle, generate_dataset); lessons from the probes: relative
    comparison against the control arm over fixed bars, never key a metric on labels the model itself

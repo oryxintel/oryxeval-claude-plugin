@@ -312,7 +312,7 @@ and whether they exist today, and any case whose text is embedded in a prompt
 - **Credentials: where they live, and HOW they load** - the environment variable,
   secret store or file, and whether the loader resolves relative to the working
   directory. A loader that does will find nothing from `evals/`; the plan says
-  which absolute path to load from instead. oryxflow never reads or stores a key.
+  which absolute path to load from instead. oryxeval never reads or stores a key.
   NEVER write a key, token or internal hostname into the plan file.
 - **Where the production code lives, and how it becomes importable** - the
   package's directory (often not the repo root), and whether it already imports
