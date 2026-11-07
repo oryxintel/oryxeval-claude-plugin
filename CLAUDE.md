@@ -25,6 +25,15 @@ The library is `oryxeval` on PyPI (`pip install oryxeval`); this repo only
 teaches an agent to use it. The plugin is listed in the `oryxintel` marketplace
 (`oryxeval@oryxintel`); this repo has no `marketplace.json`.
 
+## Docs
+
+User-facing docs live in the sibling repo `../oryxlib-docs` (site docs.oryxflow.dev), not here.
+Read `../oryxlib-docs/MAINTAINING.md` before editing pages. Any user-facing change here
+(commands, install, skill behaviour users see) needs a docs update there, committed in that
+repo. Pages for this plugin: `docs/docs/claude-plugin/evals.md` and the eval pages that mention
+its slash commands (`docs/docs/llm-evals-quickstart.md`, `llm-evals.md`). The changelog stays
+HERE (`docs/CHANGELOG.md`).
+
 ## Layout
 
 ```
