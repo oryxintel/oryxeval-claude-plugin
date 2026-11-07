@@ -1,7 +1,7 @@
 {
   "name": "oryxeval",
   "displayName": "oryxeval - LLM prompt evals",
-  "description": "Measure whether an LLM prompt, schema or model change is better -- in any Python repo -- with cached eval arms, git baselines and intervals.",
+  "description": "Make your coding agent prove a prompt, schema or model change is better before it ships: evals planned from your diff, baselines from git, intervals and a verdict, cached so re-runs are nearly free.",
   "version": "26.11.6",
   "author": {
     "name": "Oryx Intelligence LLC",

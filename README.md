@@ -1,9 +1,28 @@
-# oryxeval - the Claude Code plugin for measuring LLM prompt changes
+# oryxeval for Claude Code
 
-Changed a prompt, a response schema, a model or a router input and cannot tell
-whether it is better? This plugin takes that question to a defensible number,
-in ANY Python repo. It drives the `oryxeval` library: cached eval arms,
-baselines from git, and intervals.
+**Your agent just changed a prompt. Make it prove the change is better before it ships.**
+
+Coding agents edit prompts, response schemas, model ids and router inputs all
+the time, then call the result "improved" on the strength of two examples. This
+plugin gives Claude Code a real eval workflow in any Python repo: it plans the
+eval from your diff, harvests real cases from the codebase, runs the old and new
+versions side by side, and comes back with a verdict and a confidence interval,
+including "inside noise, can't tell yet" when that's the truth.
+
+- **Defensible answers.** Paired differences with intervals, a guardrail that
+  must not get worse, and a check that the LLM judge agrees with human labels.
+- **The baseline is what actually shipped.** The old prompt comes straight out
+  of git at the ref you name, not from a copy the agent retyped.
+- **No surprise bills.** Every run shows the projected call count and waits for
+  your go-ahead. Nothing that costs money runs on its own.
+- **Re-runs are nearly free.** Every arm is cached: edit one prompt and only
+  that arm re-runs; edit a judge rubric and only the scoring re-runs, with no
+  calls to the model under test.
+- **Built for real codebases.** `evals/` lives next to your production code,
+  imports it as-is, and loads credentials the way your repo already does.
+
+Under the hood it drives the [oryxeval](https://github.com/oryxintel/oryxeval)
+library.
 
 ## Install
 
