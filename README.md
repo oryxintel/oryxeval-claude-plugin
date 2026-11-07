@@ -33,6 +33,8 @@ The plugin is listed in the `oryxintel` marketplace:
 /plugin install oryxeval@oryxintel
 ```
 
+When `/plugin` asks where to install, pick **Install for you (user scope)** so the plugin works in every project, not just this one. From a shell, `claude plugin install oryxeval@oryxintel` installs at user scope by default.
+
 Then install the library into the environment that runs your production code:
 `pip install "oryxeval>=26.11.6"`.
 
