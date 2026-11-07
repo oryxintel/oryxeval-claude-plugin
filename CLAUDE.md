@@ -30,8 +30,9 @@ teaches an agent to use it. The plugin is listed in the `oryxintel` marketplace
 User-facing docs live in the sibling repo `../oryxlib-docs` (site docs.oryxflow.dev), not here.
 Read `../oryxlib-docs/MAINTAINING.md` before editing pages. Any user-facing change here
 (commands, install, skill behaviour users see) needs a docs update there, committed in that
-repo. Pages for this plugin: `docs/docs/claude-plugin/evals.md` and the eval pages that mention
-its slash commands (`docs/docs/llm-evals-quickstart.md`, `llm-evals.md`). The changelog stays
+repo. Pages for this plugin (the ones that name its `/oryxeval:` slash commands):
+`docs/docs/claude-plugin/evals.md` and `docs/docs/claude-plugin/commands.md`. The oryxeval library
+pages (`llm-evals*.md`) do not mention the commands. The changelog stays
 HERE (`docs/CHANGELOG.md`).
 
 ## Layout
