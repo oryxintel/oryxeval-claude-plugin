@@ -18,5 +18,5 @@ file names.
   `/oryxeval:eval-plan`, `/oryxeval:eval-init`, `/oryxeval:eval-cases` and
   `/oryxeval:eval-run`, and the `resources/template-eval/` scaffold, moved from
   the oryxflow plugin. Needs `pip install "oryxeval>=26.11.6"`. Install:
-  `/plugin install oryxeval@oryxflow`. Migrating an existing `evals/`: change
+  `/plugin install oryxeval@oryxintel`. Migrating an existing `evals/`: change
   only its import lines (the skill's `oryxflow.evals` rule).

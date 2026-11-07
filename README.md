@@ -26,11 +26,11 @@ library.
 
 ## Install
 
-The plugin is listed in the `oryxflow` marketplace:
+The plugin is listed in the `oryxintel` marketplace:
 
 ```
 /plugin marketplace add https://github.com/oryxintel/oryxflow-claude-plugin.git
-/plugin install oryxeval@oryxflow
+/plugin install oryxeval@oryxintel
 ```
 
 Then install the library into the environment that runs your production code:

@@ -22,8 +22,8 @@ needs an absolute path, copy the primary working directory verbatim.
 One skill, `oryxeval` (activates in ANY Python repo when an LLM prompt, schema
 or model change is planned or made), four manual commands and one scaffold.
 The library is `oryxeval` on PyPI (`pip install oryxeval`); this repo only
-teaches an agent to use it. The plugin is listed in the `oryxflow` marketplace
-(`oryxeval@oryxflow`); this repo has no `marketplace.json`.
+teaches an agent to use it. The plugin is listed in the `oryxintel` marketplace
+(`oryxeval@oryxintel`); this repo has no `marketplace.json`.
 
 ## Layout
 

@@ -16,7 +16,7 @@ scaffold. They take "I changed a prompt" to a defensible number, using the
 `oryxeval` Python library (`pip install oryxeval`), which is NOT shipped here:
 the skill documents how to use it. It works in ANY Python repo; `evals/`
 becomes one small oryxflow project. The plugin is listed in the `oryxflow`
-marketplace (`/plugin install oryxeval@oryxflow`); this repo has no
+marketplace (`/plugin install oryxeval@oryxintel`); this repo has no
 `marketplace.json`.
 
 ## Components
