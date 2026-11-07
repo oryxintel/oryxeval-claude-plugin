@@ -164,9 +164,9 @@ environment and STOP. Do not install anything yourself.
 **a. `oryxeval`** - `python -c "import oryxeval"`. The fix names the minimum
 version:
 
-- uv project (`uv.lock`, `[tool.uv]`): `uv pip install "oryxeval>=26.11.0"`
-- poetry (`poetry.lock`): `poetry add "oryxeval>=26.11.0"`
-- venv / conda env: `pip install "oryxeval>=26.11.0"`
+- uv project (`uv.lock`, `[tool.uv]`): `uv pip install "oryxeval>=26.11.6"`
+- poetry (`poetry.lock`): `poetry add "oryxeval>=26.11.6"`
+- venv / conda env: `pip install "oryxeval>=26.11.6"`
 
 If the production package pins its dependencies in a subdirectory's
 `pyproject.toml`, that is the environment to install into.

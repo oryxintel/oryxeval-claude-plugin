@@ -22,7 +22,7 @@ mandatory guardrail, baselines, judges, reading a verdict - is in
 **Read the docs before the source.** https://docs.oryxflow.dev/llms.txt (the LLM
 evals pages) and https://pydantic.dev/docs/ai/evals/ . pydantic-evals already ships
 judges, tool-call checks and confusion matrices; reuse them. The INSTALLED version
-wins over the docs. Install: `pip install "oryxeval>=26.11.0"`.
+wins over the docs. Install: `pip install "oryxeval>=26.11.6"`.
 
 **`No module named 'oryxflow.evals'`? Change only the import lines** of each
 existing eval (`oryxflow.evals` -> `oryxeval`). Keep `import oryxflow` and every

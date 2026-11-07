@@ -11,10 +11,12 @@ file names.
 
 ## [Unreleased]
 
+## [26.11.6] - 2026-11-06
+
 ### Added
 - First release: the `oryxeval` skill, the four manual commands
   `/oryxeval:eval-plan`, `/oryxeval:eval-init`, `/oryxeval:eval-cases` and
   `/oryxeval:eval-run`, and the `resources/template-eval/` scaffold, moved from
-  the oryxflow plugin. Needs `pip install "oryxeval>=26.11.0"`. Install:
+  the oryxflow plugin. Needs `pip install "oryxeval>=26.11.6"`. Install:
   `/plugin install oryxeval@oryxflow`. Migrating an existing `evals/`: change
   only its import lines (the skill's `oryxflow.evals` rule).

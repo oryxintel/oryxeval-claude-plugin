@@ -15,7 +15,7 @@ The plugin is listed in the `oryxflow` marketplace:
 ```
 
 Then install the library into the environment that runs your production code:
-`pip install "oryxeval>=26.11.0"`.
+`pip install "oryxeval>=26.11.6"`.
 
 An `evals/` written against `oryxflow.evals` keeps its cache only if you change
 its import lines and nothing else; the steps are the `oryxflow.evals` rule in
@@ -62,7 +62,7 @@ that an arm has gone stale, with the cost, but never runs one for you.
 
 1. Install the plugin for that project (or user-wide), as above.
 2. Install the library into that project's environment:
-   `pip install "oryxeval>=26.11.0"`.
+   `pip install "oryxeval>=26.11.6"`.
 3. Optionally add this block to the project's `CLAUDE.md`, filled in, so every
    session knows the project specifics without rediscovering them:
 

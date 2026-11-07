@@ -2,7 +2,7 @@
   "name": "oryxeval",
   "displayName": "oryxeval - LLM prompt evals",
   "description": "Measure whether an LLM prompt, schema or model change is better -- in any Python repo -- with cached eval arms, git baselines and intervals.",
-  "version": "26.11.0",
+  "version": "26.11.6",
   "author": {
     "name": "Oryx Intelligence LLC",
     "email": "dev@oryxintel.com"
